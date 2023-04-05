@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@700&family=Dela+Gothic+One&display=swap');
+
+:root {
+    --left-bg-color: rgba(129, 190, 234, 0.7);
+    --right-bg-color: rgba(46, 34, 60, 0.7);
+    --left-btn-hover-color: rgba(246, 227, 60, 1);
+    --right-btn-hover-color: rgba(250, 21, 74, 1);
+    --hover-width: 70%;
+    --other-width: 30%;
+    --speed: 1000ms;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'BIZ UDPGothic', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+}
+/* --------------Container---------------- */
+.container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #333;
+}
+/* ---------------------2-Splited-Container---------------------- */
+.split {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+/* -----------Left-split----------- */
+.split.left {
+    left: 0;
+    background: url('assets/bts-anime.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.split.left::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--left-bg-color);
+}
+/* -----------Right-split----------- */
+.split.right {
+    right: 0;
+    background: url('assets/bts-tinytan.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.split.right::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--right-bg-color);
+}
+.split.left,
+.split.right,
+.split.left::before,
+.split.right::before {
+    transition: all var(--speed) ease-in-out;
+}
+/* -----------75% width on Hovered split and 25% width of other split ------------- */
+.hover-left .left {
+    width: var(--hover-width);
+}
+.hover-left .right {
+    width: var(--other-width);
+}
+.hover-right .right {
+    width: var(--hover-width);
+}
+.hover-right .left {
+    width: var(--other-width);
+}
+
+/* -----------------Heading------------- */
+h1 {
+    font-size: 4rem;
+    color: white;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+.watch-btn {
+    width: 15rem;
+    padding: 1.5rem;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 0.2rem solid #fff;
+    font-family: Georgia, serif;
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+    /* font-size: .5rem; */
+    font-weight: normal;
+    text-transform: uppercase;
+}
+.split.left .watch-btn:hover {
+    background-color: var(--left-btn-hover-color);
+    border-color: var(--left-btn-hover-color);
+}
+.split.right .watch-btn:hover {
+    background-color: var(--right-btn-hover-color);
+    border-color: var(--right-btn-hover-color);
+}
+
+/* ------------------------Responsive elements------------------------- */
+@media (max-width: 800px) {
+    h1 {
+        font-size: 2rem;
+        top: 30%;
+    }
+
+    .watch-btn {
+        padding: 1.2rem;
+        width: 12rem;
+    }
+}
